@@ -324,7 +324,7 @@ footer {
   width: 360px;
 }
 .indoor-bg {
-  background-image: url(../images/indoorpic.jpeg);
+  background-image: url(../images/bark.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -370,7 +370,7 @@ footer {
   transition: 0.5s;
 }
 .con-bg {
-  background-image: url(../images/indoorpic.jpeg);
+  background-image: url(../images/bark.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -485,7 +485,7 @@ footer {
 }
 
 .glassparent {
-  background: url(../images/back3.jpg) no-repeat left;
+  background: url(../images/background.jpeg) no-repeat left;
   background-size: 55%;
   background-color: rgb(53, 52, 52);
   overflow: hidden;

@@ -50,7 +50,7 @@ h1 {
 
 .loginbg {
   min-height: 100vh;
-background-image: url(../images/logsign.jpeg);
+background-image: url(../images/bark.jpg);
 background-size: cover; /* Add this line */
 background-attachment: fixed;
 background-position: center;
