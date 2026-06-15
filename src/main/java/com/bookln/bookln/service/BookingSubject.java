@@ -3,6 +3,9 @@ package com.bookln.bookln.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 // Observer Interface
 interface Observer {
     void update(String message);
@@ -24,10 +27,14 @@ class MaintenanceObserver implements Observer {
 }
 
 // Subject Class
+@Service
 public class BookingSubject {
-    private List<Observer> observers = new ArrayList<>();
+    private final List<Observer> observers = new ArrayList<>();
+    private final NotificationCenterService notificationCenterService;
 
-    public BookingSubject() {
+    @Autowired
+    public BookingSubject(NotificationCenterService notificationCenterService) {
+        this.notificationCenterService = notificationCenterService;
         // Automatically attach observers when created
         attach(new AdminObserver());
         attach(new MaintenanceObserver());
@@ -41,5 +48,11 @@ public class BookingSubject {
         for (Observer observer : observers) {
             observer.update(message);
         }
+
+        notificationCenterService.publish(message);
+    }
+
+    public List<NotificationCenterService.NotificationMessage> getNotificationsAfter(long lastSeenId) {
+        return notificationCenterService.getAfter(lastSeenId);
     }
 }

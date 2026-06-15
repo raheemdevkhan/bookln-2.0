@@ -9,6 +9,8 @@ import jakarta.servlet.http.HttpSession;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.bookln.bookln.model.Booking;
@@ -29,6 +32,9 @@ public class PageController {
 
     @Autowired
     private CourtDataService courtService;
+
+    @Autowired
+    private BookingSubject bookingSubject;
 
     // --- Simple Pages ---
 
@@ -137,8 +143,7 @@ public class PageController {
                 .build();
 
         // 3. Observer Pattern Implementation
-        BookingSubject subject = new BookingSubject();
-        subject.notifyAllObservers(
+        bookingSubject.notifyAllObservers(
                 "New booking received for " + newBooking.getCourtName() + " at " + newBooking.getTime());
 
         // 1. Check if user is logged in
@@ -182,5 +187,22 @@ public class PageController {
             return new RedirectView("/indoor");
         }
 
+    }
+
+    @GetMapping("/api/notifications")
+    @ResponseBody
+    public Map<String, Object> getNotifications(
+            @RequestParam(value = "after", defaultValue = "0") long after,
+            HttpSession session) {
+
+        if (session.getAttribute("currentUser") == null) {
+            return Map.of(
+                    "latestId", after,
+                    "messages", List.of());
+        }
+
+        return Map.of(
+                "latestId", after,
+                "messages", bookingSubject.getNotificationsAfter(after));
     }
 }

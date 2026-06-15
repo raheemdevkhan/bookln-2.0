@@ -2,6 +2,7 @@
 
 * {
   margin: 0;
+@media screen and (max-width: 768px) {
   padding: 0;
   box-sizing: border-box;
 }
@@ -33,14 +34,18 @@ background-position: center;
 }
 
 .S-head {
-  color:white;
+  color:#f3fbff;
   font-size: 50px;
   font-weight: bolder;
+  font-family: "Bebas Neue", serif;
+  letter-spacing: 1px;
 }
 
 a {
   color: #fff;
+}
   text-decoration: none;
+@media screen and (max-width: 420px) {
   transition: color 0.5s;
 }
 
@@ -62,7 +67,7 @@ a {
 
 
 .alr-acc-a {
-  color:wheat;
+  color:#d8f2ff;
  }
 .header-content {
   margin-top: 10px;
@@ -77,27 +82,39 @@ a {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 100vh;
+  width: min(560px, 94%);
+  min-height: 660px;
+  margin: 24px auto 30px;
+  padding: 34px 30px 24px;
+  border-radius: 24px;
+  border: 1px solid rgba(154, 227, 255, 0.28);
+  background: linear-gradient(145deg, rgba(8, 25, 44, 0.86), rgba(18, 45, 74, 0.72));
+  box-shadow:
+    inset 0 1px 0 rgba(213, 244, 255, 0.18),
+    0 24px 42px rgba(0, 0, 0, 0.45);
 }
 
 .name .names,
 .id .names,
 .input-box .input-field {
-  width: 100%;
+  width: 460px;
+  max-width: 100%;
   height: 60px;
   font-size: 17px;
   padding: 0 25px;
   margin-bottom: 15px;
   border-radius: 30px;
-  border: none;
-  box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(158, 224, 255, 0.22);
+  background: rgba(241, 251, 255, 0.94);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.28);
   outline: none;
-  transition: 0.3s;
+  transition: 0.25s ease;
 }
 
 .input-field:focus,
 .name:focus {
-  width: 105%;
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 3px rgba(94, 207, 255, 0.3);
 }
 
 .input-box {
@@ -116,11 +133,11 @@ a {
 }
 
 .sign-up-btn {
-  width: 200px;
+  width: 260px;
   height: 60px;
   align-items: center;
   border: none;
-  background-image: linear-gradient(navy);
+  background-image: linear-gradient(135deg, #2dcfff, #2c74ff);
   color: white;
   font-weight: bolder;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -131,8 +148,8 @@ a {
 }
 
 .sign-up-btn:hover {
-  background: rgb(70, 131, 155);
-  transform: scale(1.05);
+  background: linear-gradient(135deg, #4cdfff, #3e86ff);
+  transform: translateY(-1px);
 }
 
 .section1,
@@ -141,13 +158,13 @@ a {
   align-items: center;
   justify-content: center;
   font-size: 14px;
-  color: #555;
+  color: #d4ebf8;
   gap: 15px;
 }
 
 .section1 section a,
 .section2 section a {
-  color: #555;
+  color: #bde7ff;
 }
 
 .signup-footer {
@@ -161,10 +178,13 @@ a {
   font-size: 16px;
   text-decoration: none;
   margin: 0;
+  color: #7cd5ff;
+  font-weight: 600;
 }
 
 .signup-footer a:hover {
   text-decoration: underline;
+  color: #b7ebff;
 }
 @media screen and (max-width:600px){
  
@@ -180,6 +200,11 @@ a {
   color: #555;
   gap: 1px;
   
+}
+
+.main {
+  width: 92%;
+  padding: 24px 16px 20px;
 }
 
 
